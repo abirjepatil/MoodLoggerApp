@@ -48,7 +48,7 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
                 alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                         SystemClock.elapsedRealtime() +
                                 60 * 60 * 1000, pendingNotification); //20 sec for demo
-                // 60 * 60 * 1000, pendingNotification);
+                // romantic * romantic * 1000, pendingNotification);
 
             }
         } else {

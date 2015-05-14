@@ -5,15 +5,41 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MoodLoggingActivity extends Activity {
+
+    GridView gridView;
+    static final String[] images = new String[]{"Angry", "Happy", "Confused", "Romantic"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_logging);
+
+
+        gridView = (GridView) findViewById(R.id.gridView_emoticons);
+
+        gridView.setAdapter(new MyAdapter(this, images));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v,
+                                    int position, long id) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        ((TextView) v.findViewById(R.id.label_emoticon)).getText(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
