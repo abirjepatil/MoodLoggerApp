@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +43,22 @@ public class MyAdapter extends BaseAdapter {
                 imageEmoticons.setImageResource(R.drawable.happy);
             } else if (images.equals("Confused")) {
                 imageEmoticons.setImageResource(R.drawable.confused);
+            } else if (images.equals("Naughty")) {
+                imageEmoticons.setImageResource(R.drawable.naughty);
+            } else if (images.equals("Sad")) {
+                imageEmoticons.setImageResource(R.drawable.sad);
+            } else if (images.equals("Bored")) {
+                imageEmoticons.setImageResource(R.drawable.bored);
+            } else if (images.equals("Neutral")) {
+                imageEmoticons.setImageResource(R.drawable.neutral);
+            } else if (images.equals("Cool")) {
+                imageEmoticons.setImageResource(R.drawable.cool);
+            } else if (images.equals("Crying")) {
+                imageEmoticons.setImageResource(R.drawable.crying);
+            } else if (images.equals("Excited")) {
+                imageEmoticons.setImageResource(R.drawable.excited);
+            } else if (images.equals("Sleepy")) {
+                imageEmoticons.setImageResource(R.drawable.sleepy);
             } else {
                 imageEmoticons.setImageResource(R.drawable.romantic);
             }

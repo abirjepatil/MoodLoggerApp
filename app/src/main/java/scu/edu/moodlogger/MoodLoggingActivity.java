@@ -1,6 +1,7 @@
 package scu.edu.moodlogger;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 public class MoodLoggingActivity extends Activity {
 
     GridView gridView;
-    static final String[] images = new String[]{"Angry", "Happy", "Confused", "Romantic"};
+    static final String[] images = new String[]{"Happy","Confused", "Romantic", "Naughty",
+            "Angry", "Excited", "Crying", "Neutral","Sleepy", "Bored", "Sad", "Cool"
+    };
 
 
     @Override
@@ -25,6 +28,8 @@ public class MoodLoggingActivity extends Activity {
 
 
         gridView = (GridView) findViewById(R.id.gridView_emoticons);
+        gridView.setVerticalSpacing(1);
+        gridView.setHorizontalSpacing(1);
 
         gridView.setAdapter(new MyAdapter(this, images));
 
