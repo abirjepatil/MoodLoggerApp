@@ -23,7 +23,9 @@ public class MyAdapter extends BaseAdapter {
 
         View gridView;
 
-        if (convertView == null) {
+//        if (convertView != null) {
+//            gridView =  convertView;
+//        }else{
 
             gridView = new View(context);
 
@@ -63,9 +65,7 @@ public class MyAdapter extends BaseAdapter {
                 imageEmoticons.setImageResource(R.drawable.romantic);
             }
 
-        } else {
-            gridView =  convertView;
-        }
+      //  }
 
         return gridView;
     }

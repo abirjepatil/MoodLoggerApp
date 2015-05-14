@@ -18,7 +18,7 @@
 
     <GridView
         android:id="@+id/gridView_emoticons"
-        android:numColumns="auto_fit"
+        android:numColumns="3"
         android:gravity="center"
         android:columnWidth="160dp"
         android:stretchMode="columnWidth"

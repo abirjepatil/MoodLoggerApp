@@ -1,8 +1,6 @@
 package scu.edu.moodlogger;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,8 +14,8 @@ import android.widget.Toast;
 public class MoodLoggingActivity extends Activity {
 
     GridView gridView;
-    static final String[] images = new String[]{"Happy","Confused", "Romantic", "Naughty",
-            "Angry", "Excited", "Crying", "Neutral","Sleepy", "Bored", "Sad", "Cool"
+    static final String[] images = new String[]{"Happy", "Confused", "Naughty", "Angry",
+            "Excited", "Cool", "Bored", "Sleepy", "Neutral", "Crying", "Romantic", "Sad"
     };
 
 
