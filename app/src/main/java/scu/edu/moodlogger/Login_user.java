@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -66,6 +67,22 @@ public class Login_user extends ActionBarActivity {
 
             if(dbUser.Login(username, password))
             {
+                /*
+                If login is succesful then store the username in a shared preference varaiable
+                This is used in the Chart Activity to retreive the relevant moods logged by this current user.
+                */
+
+                /*
+
+                Added by Abhishek
+                 */
+                SharedPreferences sp = getSharedPreferences("user_pref", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("user_key", username);
+                editor.commit();
+
+
+
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }else{

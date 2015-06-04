@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 
@@ -29,12 +30,53 @@ public class DBUserAdapter
 
     /* NAME OF TABLES */
     private static final String DATABASE_TABLE_USERS = "users";
-    private static final String DATABASE_TABLE_EMOTIONS = "emotions";
+    private static final String DATABASE_TABLE_MOODS = "mood";
 
     private static final String DATABASE_CREATE =
             "create table users (_id integer primary key autoincrement, "
                     + "username text not null, "
-                    + "password text not null);";
+                    + "password text not null)";
+
+    private static final String DATABASE_CREATE_MOOD =
+            "    CREATE TABLE IF NOT EXISTS `mood` (" +
+                    "  `userid` varchar(200) NOT NULL," +
+                    "  `moodid` int(11) NOT NULL," +
+                    "  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n" +
+                    "  `picture` varchar(200) NOT NULL," +
+                    "  `notes` varchar(1000) NOT NULL," +
+                    "  `location` varchar(50) NOT NULL" +
+                    ")";
+
+
+    /*
+        Table to log moods
+        CREATE TABLE IF NOT EXISTS `mood` (
+  `userid` int(11) NOT NULL,
+  `moodid` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `picture` varchar(200) NOT NULL,
+  `notes` varchar(1000) NOT NULL,
+  `location` varchar(50) NOT NULL
+)
+
+
+     */
+
+
+
+
+    /*
+    INSERT INTO `test`.`mood` (`userid`, `moodid`, `timestamp`, `picture`, `notes`, `location`) VALUES ('ab', '2', CURRENT_TIMESTAMP, 'Sleepy for a change', 'Sleepy', ''), ('ab', '3', CURRENT_TIMESTAMP, 'Bored', 'Bored', 'Bored');
+     */
+
+
+    private static final String DATABASE_MOOD_SAMPLE =
+            "INSERT INTO `mood` (`userid`, `moodid`, `timestamp`, `picture`, `notes`, `location`) VALUES" +
+                    "('ab', 1, '2015-06-04 00:57:16', 'Happy', 'Happy', 'Happy')," +
+                    "('ab', 1, '2015-06-04 00:57:16', 'Happy Again', 'Always Happy', '')," +
+                    "('ab', 2, '2015-06-04 00:57:51', 'Sleepy for a change', 'Sleepy', '')," +
+                    "('ab', 3, '2015-06-04 00:57:51', 'Bored', 'Bored', 'Bored');";
+
 
     private Context context = null;
     private DatabaseHelper DBHelper;
@@ -57,6 +99,10 @@ public class DBUserAdapter
         public void onCreate(SQLiteDatabase db)
         {
             db.execSQL(DATABASE_CREATE);
+            db.execSQL(DATABASE_CREATE_MOOD);
+            //mock data for the database.
+            db.execSQL(DATABASE_MOOD_SAMPLE);
+
         }
 
         @Override
@@ -104,5 +150,36 @@ public class DBUserAdapter
         }
         return false;
     }
+
+/**
+ * @input : user id
+ * @output: data Structure with the number of moods
+ *
+ */
+
+public DataTypeChart getData(String username) throws SQLException
+{
+
+    DataTypeChart data= new DataTypeChart();
+    Cursor mCursor = db.rawQuery("SELECT * FROM moods WHERE username='ab'",null);
+    if (mCursor != null) {
+        if(mCursor.getCount() > 0)
+        {
+            data.numberOfData=mCursor.getCount();
+
+            int duration = Toast.LENGTH_SHORT;
+
+
+            Toast toast = Toast.makeText(context, mCursor.getCount(), duration);
+            toast.show();
+            return data;
+        }
+    }
+    data.numberOfData=0;
+    return data;
+}
+
+
+
 
 }

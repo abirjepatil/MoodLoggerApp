@@ -1,18 +1,53 @@
 package scu.edu.moodlogger;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import scu.edu.moodlogger.PieChart;
 
 public class ChartActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
+
+        //getting the user id that has been temporarily stored
+        SharedPreferences sp = getSharedPreferences("user_pref", Activity.MODE_PRIVATE);
+        String userid = sp.getString("user_key","");
+        DataTypeChart data= new DataTypeChart();
+        /**
+         * Connection with the database
+         *
+         */
+        try {
+            DBUserAdapter dbUser = new DBUserAdapter(ChartActivity.this);
+            dbUser.open();
+            data=dbUser.getData(userid);
+        }
+
+        catch(Exception e)
+        {
+            Context context = getApplicationContext();
+            CharSequence text = userid;
+            int duration = Toast.LENGTH_SHORT;
+
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+
+        }
+
+
+
+
+
 
         PieChart pieChart = (PieChart) findViewById(R.id.pieChart);
         float[] datas = new float[6];
