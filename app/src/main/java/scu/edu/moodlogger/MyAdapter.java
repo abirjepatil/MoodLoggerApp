@@ -21,13 +21,7 @@ public class MyAdapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView;
-
-//        if (convertView != null) {
-//            gridView =  convertView;
-//        }else{
-
-            gridView = new View(context);
+        View gridView = new View(context);
 
             gridView = inflater.inflate(R.layout.emoticons, null);
 
@@ -39,27 +33,27 @@ public class MyAdapter extends BaseAdapter {
 
             String images = emoticons[position];
 
-            if (images.equals("Angry")) {
+            if (images.equals("angry")) {
                 imageEmoticons.setImageResource(R.drawable.angry);
-            } else if (images.equals("Happy")) {
+            } else if (images.equals("happy")) {
                 imageEmoticons.setImageResource(R.drawable.happy);
-            } else if (images.equals("Confused")) {
+            } else if (images.equals("confused")) {
                 imageEmoticons.setImageResource(R.drawable.confused);
-            } else if (images.equals("Naughty")) {
+            } else if (images.equals("naughty")) {
                 imageEmoticons.setImageResource(R.drawable.naughty);
-            } else if (images.equals("Sad")) {
+            } else if (images.equals("sad")) {
                 imageEmoticons.setImageResource(R.drawable.sad);
-            } else if (images.equals("Bored")) {
+            } else if (images.equals("bored")) {
                 imageEmoticons.setImageResource(R.drawable.bored);
-            } else if (images.equals("Neutral")) {
+            } else if (images.equals("neutral")) {
                 imageEmoticons.setImageResource(R.drawable.neutral);
-            } else if (images.equals("Cool")) {
+            } else if (images.equals("cool")) {
                 imageEmoticons.setImageResource(R.drawable.cool);
-            } else if (images.equals("Crying")) {
+            } else if (images.equals("crying")) {
                 imageEmoticons.setImageResource(R.drawable.crying);
-            } else if (images.equals("Excited")) {
+            } else if (images.equals("excited")) {
                 imageEmoticons.setImageResource(R.drawable.excited);
-            } else if (images.equals("Sleepy")) {
+            } else if (images.equals("sleepy")) {
                 imageEmoticons.setImageResource(R.drawable.sleepy);
             } else {
                 imageEmoticons.setImageResource(R.drawable.romantic);

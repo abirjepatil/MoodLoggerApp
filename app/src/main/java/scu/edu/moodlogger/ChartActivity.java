@@ -28,13 +28,23 @@ public class ChartActivity extends Activity {
         try {
             DBUserAdapter dbUser = new DBUserAdapter(ChartActivity.this);
             dbUser.open();
+           // String data_String;
             data=dbUser.getData(userid);
+
+            Context context = getApplicationContext();
+            CharSequence text = userid+data.numberOfData;
+            int duration = Toast.LENGTH_SHORT;
+
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
         }
 
         catch(Exception e)
         {
             Context context = getApplicationContext();
-            CharSequence text = userid;
+            CharSequence text = "Failed";
             int duration = Toast.LENGTH_SHORT;
 
 
@@ -50,22 +60,24 @@ public class ChartActivity extends Activity {
 
 
         PieChart pieChart = (PieChart) findViewById(R.id.pieChart);
-        float[] datas = new float[6];
-        datas[0] = 34;
-        datas[1] = 24;
-        datas[2] = 32;
-        datas[3] = 24;
-        datas[4] = 53;
-        datas[5] = 23;
-        pieChart.setData(datas);
+        float[] datas = new float[12];
+        String[] labels = new String[12];
+        int count=0;
+        for(int i=0;i<12;i++)
+        {
 
-        String[] labels = new String[6];
-        labels[0] = "JOHN";
-        labels[1] = "GEORGE";
-        labels[2] = "RAYMOND";
-        labels[3] = "STEPHEN";
-        labels[4] = "JACK";
-        labels[5] = "BOBBY";
+            if(data.datas[i]!=0)
+            {
+                datas[count]=data.datas[i];
+                labels[count++]=data.labels[i];
+
+            }
+
+
+        }
+
+
+        pieChart.setData(datas);
         pieChart.setLabels(labels);
     }
 

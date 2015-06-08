@@ -8,5 +8,6 @@
     <string name="title_activity_chart">ChartActivity</string>
     <string name="title_activity_reminder">ReminderActivity</string>
     <string name="ticker_text">How are you feeling today?</string>
+    <string name="title_activity_mood">MoodActivity</string>
 
 </resources>
